@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 950212.Hj
+    url: jdbc:mysql://120.92.35.241:3306/mall?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&useOldAliasMetadataBehavior=true&useSSL=false&allowPublicKeyRetrieval=true
+
+jwt:
+  expiration: 7500000000
+  token: Authorization
+  secret: secret
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
