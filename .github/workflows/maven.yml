@@ -48,4 +48,4 @@ jobs:
             git pull
             mvn clean install
             curl -X POST 127.0.0.1:8089/sactuator/shutdown
-            nohup java -jar ./target/mall-api-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+            nohup java -jar ./target/mall-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
