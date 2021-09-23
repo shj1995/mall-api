@@ -14,7 +14,6 @@ import java.util.Collections;
 /**
  * @author shj
  * @date 2021/9/21 8:15 下午
- * @company 上海佳一智慧健康管理有限公司
  */
 @Service("JwtUserDetailsService")
 @RequiredArgsConstructor

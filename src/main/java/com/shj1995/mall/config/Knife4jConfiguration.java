@@ -12,7 +12,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 /**
  * @author shj
  * @date 2021/9/21 8:05 下午
- * @company 上海佳一智慧健康管理有限公司
  */
 @Configuration
 @EnableSwagger2WebMvc

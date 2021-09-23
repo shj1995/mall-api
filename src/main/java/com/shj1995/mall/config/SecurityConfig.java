@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/v2/api-docs").permitAll()
                 .antMatchers("/api/tk/systemInfo/current").permitAll()
                 .antMatchers("/api/**").permitAll()
+                .antMatchers("/toolkit/file/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

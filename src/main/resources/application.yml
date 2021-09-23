@@ -9,6 +9,15 @@ jwt:
   expiration: 7500000000
   token: Authorization
   secret: secret
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+simple:
+  storage:
+    local:
+      dir-path: /data/work/storage/simple/local
+    root: /data/work/storage/simple
+    temp: /data/work/storage/simple/temp
+    permanent: /data/work/storage/simple/local

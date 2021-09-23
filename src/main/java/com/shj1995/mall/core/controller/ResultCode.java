@@ -6,7 +6,6 @@ import lombok.Getter;
 /**
  * @author shj
  * @date 2021/9/22 7:52 上午
- * @company 上海佳一智慧健康管理有限公司
  */
 @Getter
 @AllArgsConstructor

@@ -5,7 +5,6 @@ import lombok.Data;
 /**
  * @author shj
  * @date 2021/9/21 8:18 下午
- * @company 上海佳一智慧健康管理有限公司
  */
 @Data
 public class Result<T> {
@@ -20,6 +19,7 @@ public class Result<T> {
         result.setData(data);
         return result;
     }
+
     public static <T> Result<T> fail(String message){
         Result<T> result = new Result<>();
         result.setCode(ResultCode.FAIL.getCode());

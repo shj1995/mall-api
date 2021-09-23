@@ -8,7 +8,6 @@ import java.util.Collection;
 /**
  * @author shj
  * @date 2021/9/21 8:27 下午
- * @company 上海佳一智慧健康管理有限公司
  */
 @Data
 public class User {

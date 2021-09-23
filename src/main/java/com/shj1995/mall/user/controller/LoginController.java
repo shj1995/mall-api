@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "用户认证相关接口")
+@Api(tags = "登录认证相关接口")
 @RestController
 @RequiredArgsConstructor
 public class LoginController {
@@ -45,7 +45,6 @@ public class LoginController {
     public Result<String> login(@RequestBody UserLoginReq req) {
         try {
             UserDetails userDetail = this.jwtUserDetailsService.loadUserByUsername(req.getUsername());
-            System.out.println(this.passwordEncoder.encode(req.getPassword()));
             if (this.passwordEncoder.matches(req.getPassword(), userDetail.getPassword())) {
                 String token = jwtTokenUtil.generateToken(userDetail);
                 return Result.ok(token);

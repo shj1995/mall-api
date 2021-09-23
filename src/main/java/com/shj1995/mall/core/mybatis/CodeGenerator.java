@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.shj1995.mall.core.controller.BaseController;
+import com.shj1995.mall.core.entity.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,11 @@ import java.util.List;
 /**
  * @author shj
  * @date 2021/9/21 7:54 下午
- * @company 上海佳一智慧健康管理有限公司
  */
 public class CodeGenerator {
 
-    private static final String[] YOUR_TABLE_NAMES = {"user"};
-    private static final String YOUR_MODULE_NAME = "user";
+    private static final String[] YOUR_TABLE_NAMES = {"file"};
+    private static final String YOUR_MODULE_NAME = "toolkit";
 
     public static void main(String[] args) {
         // 代码生成器
@@ -27,7 +28,7 @@ public class CodeGenerator {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setOutputDir("./src2/main/java");
         gc.setFileOverride(true);
         gc.setAuthor("石豪杰");
         gc.setOpen(false);
@@ -58,10 +59,8 @@ public class CodeGenerator {
             }
         };
 
-        // 如果模板引擎是 freemarker
-        String templatePath = "/templates/mapper.xml.vm";
         // 如果模板引擎是 velocity
-        // String templatePath = "/templates/mapper.xml.vm";
+        String templatePath = "/templates/mapper.xml.vm";
 
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
@@ -108,19 +107,17 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-//        strategy.setSuperEntityClass("你自己的父类实体,没有就不用设置!");
+        strategy.setSuperEntityClass(BaseEntity.class);
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-//        strategy.setSuperControllerClass("你自己的父类控制器,没有就不用设置!");
+        strategy.setSuperControllerClass(BaseController.class);
         // 写于父类中的公共字段
-        strategy.setSuperEntityColumns("id");
+        strategy.setSuperEntityColumns("id", "deleted", "createUserId", "createTime", "updateUserId", "updateTime");
         strategy.setInclude(YOUR_TABLE_NAMES);
-//        strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
         mpg.setStrategy(strategy);
-//        mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
     }
 }
