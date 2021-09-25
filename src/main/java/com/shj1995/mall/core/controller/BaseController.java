@@ -46,19 +46,6 @@ public abstract class BaseController<T extends BaseEntity> {
         return Result.ok(true);
     }
 
-    @ApiOperation("更新")
-    @PutMapping("")
-    public Result<T> update(@RequestBody T domain) {
-        System.out.println("default put / request");
-        Long id = domain.getId();
-        if (this.service().getById(id) == null) {
-            return Result.fail("数据不存在");
-        }
-        this.service().save(domain);
-        return Result.ok(domain);
-    }
-
-
     @ApiOperation("列表查询")
     @GetMapping("/list")
     public Result<List<T>> list() {
