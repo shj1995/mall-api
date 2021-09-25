@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class CodeGenerator {
 
-    private static final String[] YOUR_TABLE_NAMES = {"file"};
-    private static final String YOUR_MODULE_NAME = "toolkit";
+    private static final String[] YOUR_TABLE_NAMES = {"product","product_spec","product_type"};
+    private static final String YOUR_MODULE_NAME = "product";
 
     public static void main(String[] args) {
         // 代码生成器
