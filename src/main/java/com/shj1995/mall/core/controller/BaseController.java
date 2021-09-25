@@ -2,6 +2,7 @@ package com.shj1995.mall.core.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shj1995.mall.core.controller.req.BaseQueryReq;
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +16,6 @@ import java.util.List;
 public abstract class BaseController<T extends BaseEntity> {
 
     public abstract IService<T> service();
-
-    @ApiOperation("创建")
-    @PostMapping("")
-    public Result<T> create(@RequestBody T domain) {
-        System.out.println("default post /{id} request");
-        this.service().save(domain);
-        return Result.ok(domain);
-    }
 
     @ApiOperation("根据ID获取")
     @GetMapping("/{id}")
@@ -72,9 +65,4 @@ public abstract class BaseController<T extends BaseEntity> {
         return Result.ok(this.service().list());
     }
 
-    @ApiOperation("分页查询")
-    @PostMapping("/search")
-    public Result<Page<T>> search(@RequestBody Page<T> page) {
-        return Result.ok(this.service().page(page));
-    }
 }

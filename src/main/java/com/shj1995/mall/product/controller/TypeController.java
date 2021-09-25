@@ -4,6 +4,7 @@ package com.shj1995.mall.product.controller;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.shj1995.mall.product.entity.Type;
 import com.shj1995.mall.product.service.ITypeService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +19,7 @@ import com.shj1995.mall.core.controller.BaseController;
  * @author 石豪杰
  * @since 2021-09-25
  */
+@Api(tags = "商品类型")
 @RestController
 @RequestMapping("/product/type")
 @RequiredArgsConstructor

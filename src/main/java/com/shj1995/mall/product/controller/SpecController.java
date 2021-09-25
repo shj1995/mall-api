@@ -6,6 +6,7 @@ import com.shj1995.mall.product.entity.Product;
 import com.shj1995.mall.product.entity.Spec;
 import com.shj1995.mall.product.service.IProductService;
 import com.shj1995.mall.product.service.ISpecService;
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +21,7 @@ import com.shj1995.mall.core.controller.BaseController;
  * @author 石豪杰
  * @since 2021-09-25
  */
+@Api(tags = "商品规格")
 @RestController
 @RequestMapping("/product/spec")
 @RequiredArgsConstructor
