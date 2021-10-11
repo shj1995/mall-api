@@ -38,4 +38,13 @@ public class ProductUpdateReq {
 
     @ApiModelProperty(value = "是否在售 1 是 0 否 ", required = true)
     private Boolean sale;
+
+    @ApiModelProperty(value = "快递模板ID ")
+    private Long expressTemplateId;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
+    @ApiModelProperty(value = "是否新品", required = true)
+    private Boolean newProduct;
 }

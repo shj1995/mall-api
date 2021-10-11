@@ -2,6 +2,7 @@ package com.shj1995.mall.product.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -18,7 +19,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@ApiModel(value="Product对象", description="商品")
+@ApiModel(value = "Product对象", description = "商品")
 public class Product extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
@@ -43,6 +44,15 @@ public class Product extends BaseEntity {
 
     @ApiModelProperty(value = "是否在售 1 是 0 否 ")
     private Boolean sale;
+
+    @ApiModelProperty(value = "快递模板ID")
+    private Long expressTemplateId;
+
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
+    @ApiModelProperty(value = "是否新品")
+    private Boolean newProduct;
 
     @ApiModelProperty(value = "创建用户id")
     private Long createUserId;
