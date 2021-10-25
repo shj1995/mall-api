@@ -48,4 +48,4 @@ jobs:
             git pull
             mvn clean install
             curl -X POST 127.0.0.1:8089/sactuator/shutdown
-            nohup java -jar ./target/mall-0.0.1-SNAPSHOT.jar > console.log 2>&1 &
+            nohup java -jar -Dspring.datasource.username=${{secrets.DB_USERNAME}} -Dspring.datasource.password=${{secrets.DB_PASSWORD}} -Dspring.datasource.url=${{secrets.DB_URL}} ./target/mall-0.0.1-SNAPSHOT.jar > console.log 2>&1 &
