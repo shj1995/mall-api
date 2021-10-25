@@ -33,12 +33,17 @@ jobs:
 
       - name: 部署搭配服务器
         uses: appleboy/ssh-action@master
+        env:
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_URL: ${{ secrets.DB_URL }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script_stop: true
+          envs: DB_USERNAME,DB_PASSWORD,DB_URL
           script: |
             export PATH=/usr/local/bin:$PATH
             source /etc/profile
@@ -48,4 +53,4 @@ jobs:
             git pull
             mvn clean install
             curl -X POST 127.0.0.1:8089/sactuator/shutdown
-            nohup java -jar -Dspring.datasource.username=${{secrets.DB_USERNAME}} -Dspring.datasource.password=${{secrets.DB_PASSWORD}} -Dspring.datasource.url=${{secrets.DB_URL}} ./target/mall-0.0.1-SNAPSHOT.jar > console.log 2>&1 &
+            nohup java -jar -Dspring.datasource.username=$DB_USERNAME -Dspring.datasource.password=$DB_PASSWORD -Dspring.datasource.url=$DB_URL ./target/mall-0.0.1-SNAPSHOT.jar > console.log 2>&1 &
