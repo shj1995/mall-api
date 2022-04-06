@@ -1,3 +1,43 @@
 spring:
   profiles:
     active: local
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: password
+    url: jdbc:mysql://127.0.0.1:3306/mall?useUnicode=true&characterEncoding=utf8&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&useOldAliasMetadataBehavior=true&useSSL=false&allowPublicKeyRetrieval=true
+
+jwt:
+  expiration: 7500000000
+  token: Authorization
+  secret: secret
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+simple:
+  storage:
+    local:
+      dir-path: /data/work/storage/mall/local
+    root: /data/work/storage/mall
+    temp: /data/work/storage/mall/temp
+    permanent: /data/work/storage/mall/local
+
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true  #启用shutdown
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /sactuator # 自定义管理端点的前缀(保证安全)
+  server:
+    port: 8089
+    address: 127.0.0.1 # 不允许远程管理连接(不允许外部调用保证安全)
