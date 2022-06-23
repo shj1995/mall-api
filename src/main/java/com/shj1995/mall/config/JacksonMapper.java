@@ -26,8 +26,8 @@ public class JacksonMapper extends ObjectMapper {
         this.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
-        simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
-        simpleModule.addSerializer(long.class, ToStringSerializer.instance);
+//        simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
+//        simpleModule.addSerializer(long.class, ToStringSerializer.instance);
         simpleModule.addSerializer(LocalDateTime.class, localDateTimeSerializer);
         simpleModule.addDeserializer(LocalDateTime.class, localDateTimeDeserializer);
         registerModule(simpleModule);

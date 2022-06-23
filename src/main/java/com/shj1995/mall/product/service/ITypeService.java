@@ -1,7 +1,9 @@
 package com.shj1995.mall.product.service;
 
-import com.shj1995.mall.product.entity.Type;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shj1995.mall.core.controller.req.BaseQueryReq;
+import com.shj1995.mall.product.entity.Type;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITypeService extends IService<Type> {
 
+    Page<Type> search(BaseQueryReq req);
 }

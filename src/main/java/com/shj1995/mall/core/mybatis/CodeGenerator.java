@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.shj1995.mall.core.controller.BaseController;
+import com.shj1995.mall.core.controller.BaseRDController;
 import com.shj1995.mall.core.entity.BaseEntity;
 
 import java.util.ArrayList;
@@ -111,7 +111,7 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-        strategy.setSuperControllerClass(BaseController.class);
+        strategy.setSuperControllerClass(BaseRDController.class);
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id", "deleted", "createUserId", "createTime", "updateUserId", "updateTime");
         strategy.setInclude(YOUR_TABLE_NAMES);

@@ -46,3 +46,6 @@ management:
   server:
     port: 8089
     address: 127.0.0.1 # 不允许远程管理连接(不允许外部调用保证安全)
+
+knife4j:
+  enable: true

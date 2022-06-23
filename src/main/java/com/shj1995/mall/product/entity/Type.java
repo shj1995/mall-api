@@ -30,7 +30,7 @@ public class Type extends BaseEntity {
     @ApiModelProperty(value = "分类等级")
     private String level;
 
-    @ApiModelProperty(value = "分类等级")
+    @ApiModelProperty(value = "上级分类")
     private String parentId;
 
     @ApiModelProperty(value = "下级分类集合")

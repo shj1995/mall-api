@@ -2,7 +2,7 @@ package com.shj1995.mall.product.controller;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.shj1995.mall.core.controller.BaseController;
+import com.shj1995.mall.core.controller.BaseRDController;
 import com.shj1995.mall.product.entity.Spec;
 import com.shj1995.mall.product.service.ISpecService;
 import io.swagger.annotations.Api;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/product/spec")
 @RequiredArgsConstructor
-public class SpecController extends BaseController<Spec> {
+public class SpecController extends BaseRDController<Spec> {
 
     private final ISpecService specService;
 

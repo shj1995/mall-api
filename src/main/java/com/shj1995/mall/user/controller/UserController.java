@@ -2,13 +2,12 @@ package com.shj1995.mall.user.controller;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.shj1995.mall.core.controller.BaseController;
+import com.shj1995.mall.core.controller.BaseRDController;
 import com.shj1995.mall.user.entity.User;
 import com.shj1995.mall.user.service.IUserService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -23,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user/user")
 @RequiredArgsConstructor
-public class UserController extends BaseController<User> {
+public class UserController extends BaseRDController<User> {
 
     private final IUserService userService;
 
