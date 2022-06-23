@@ -1,8 +1,7 @@
 package com.shj1995.mall.core.controller;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.shj1995.mall.core.controller.req.BaseQueryReq;
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +12,33 @@ import java.util.List;
  * @author shj
  * @date 2021/9/21 9:07 下午
  */
-public abstract class BaseController<T extends BaseEntity> {
+public abstract class BaseCURDController<T extends BaseEntity> {
 
     public abstract IService<T> service();
 
+
+    @ApiOperation("创建")
+    @ApiOperationSupport(ignoreParameters = {"req.id", "req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
+    @PostMapping("/create")
+    public Result<T> create(@RequestBody T req) {
+        this.service().save(req);
+        return Result.ok(req);
+    }
+
+
+    @ApiOperation("更新")
+    @ApiOperationSupport(ignoreParameters = {"req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
+    public Result<T> update(@RequestBody T req) {
+        Long id = req.getId();
+        if (this.service().getById(id) == null) {
+            return Result.fail("数据不存在");
+        }
+        this.service().updateById(req);
+        return Result.ok(req);
+    }
+
     @ApiOperation("根据ID获取")
-    @GetMapping("/{id}")
+    @GetMapping("/detailById/{id}")
     public Result<T> detail(@PathVariable Long id) {
         System.out.println("default get /{id} request");
         Result<T> result;
@@ -36,8 +56,8 @@ public abstract class BaseController<T extends BaseEntity> {
     }
 
     @ApiOperation("根据ID删除")
-    @DeleteMapping("/{id}")
-    public Result<Boolean> delete(@PathVariable String id) {
+    @DeleteMapping("/deleteById/{id}")
+    public Result<Boolean> deleteById(@PathVariable String id) {
         System.out.println("default delete /{id} request");
         if (this.service().getById(id) == null) {
             return Result.fail("数据不存在");

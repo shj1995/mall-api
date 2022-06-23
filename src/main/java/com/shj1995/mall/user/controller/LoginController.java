@@ -4,11 +4,11 @@ import com.shj1995.mall.core.controller.Result;
 import com.shj1995.mall.user.controller.req.UserLoginReq;
 import com.shj1995.mall.user.security.JwtTokenUtil;
 import com.shj1995.mall.user.security.JwtUserDetailsServiceImpl;
+import com.shj1995.mall.user.security.SecurityUserDetails;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +44,7 @@ public class LoginController {
     @PostMapping("/login")
     public Result<String> login(@RequestBody UserLoginReq req) {
         try {
-            UserDetails userDetail = this.jwtUserDetailsService.loadUserByUsername(req.getUsername());
+            SecurityUserDetails userDetail = (SecurityUserDetails) this.jwtUserDetailsService.loadUserByUsername(req.getUsername());
             if (this.passwordEncoder.matches(req.getPassword(), userDetail.getPassword())) {
                 String token = jwtTokenUtil.generateToken(userDetail);
                 return Result.ok(token);

@@ -1,13 +1,12 @@
 package com.shj1995.mall.user.entity;
 
-import java.time.LocalDateTime;
-import java.io.Serializable;
-
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -27,7 +26,13 @@ public class User extends BaseEntity {
     @ApiModelProperty(value = "用户名")
     private String username;
 
-    @ApiModelProperty(value = "密码")
+    @ApiModelProperty(value = "头像")
+    private String avatar;
+
+    @ApiModelProperty(value = "昵称")
+    private String nickname;
+
+    @ApiModelProperty(value = "密码",hidden = true)
     private String password;
 
     @ApiModelProperty(value = "手机号")

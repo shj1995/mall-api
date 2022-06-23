@@ -1,7 +1,5 @@
 package com.shj1995.mall.toolkit.entity;
 
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.shj1995.mall.core.entity.BaseEntity;
 import com.shj1995.mall.toolkit.storage.StorageFile;
@@ -39,18 +37,6 @@ public class File extends BaseEntity {
 
     @ApiModelProperty(value = "MD5")
     private String md5;
-
-    @ApiModelProperty(value = "创建用户id")
-    private Long createUserId;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "修改用户id")
-    private Long updateUserId;
-
-    @ApiModelProperty(value = "修改时间")
-    private LocalDateTime updateTime;
 
     @TableField(exist = false)
     private StorageFile storageFile;

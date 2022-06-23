@@ -6,7 +6,7 @@ import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.shj1995.mall.core.controller.BaseController;
+import com.shj1995.mall.core.controller.BaseRDController;
 import com.shj1995.mall.core.entity.BaseEntity;
 
 import java.util.ArrayList;
@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class CodeGenerator {
 
-    private static final String[] YOUR_TABLE_NAMES = {"product","product_spec","product_type"};
-    private static final String YOUR_MODULE_NAME = "product";
+    private static final String[] YOUR_TABLE_NAMES = {"zone"};
+    private static final String YOUR_MODULE_NAME = "toolkit";
 
     public static void main(String[] args) {
         // 代码生成器
@@ -42,7 +42,7 @@ public class CodeGenerator {
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("950212.Hj");
+        dsc.setPassword("shj@2012");
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -111,7 +111,7 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
         // 公共父类
-        strategy.setSuperControllerClass(BaseController.class);
+        strategy.setSuperControllerClass(BaseRDController.class);
         // 写于父类中的公共字段
         strategy.setSuperEntityColumns("id", "deleted", "createUserId", "createTime", "updateUserId", "updateTime");
         strategy.setInclude(YOUR_TABLE_NAMES);
