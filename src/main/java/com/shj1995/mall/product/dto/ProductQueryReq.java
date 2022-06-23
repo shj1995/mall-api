@@ -1,4 +1,4 @@
-package com.shj1995.mall.product.controller.req;
+package com.shj1995.mall.product.dto;
 
 import com.shj1995.mall.core.controller.req.BaseQueryReq;
 import io.swagger.annotations.ApiModel;

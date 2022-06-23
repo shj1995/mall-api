@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/tk/systemInfo/current").permitAll()
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/toolkit/file/**").permitAll()
+                .antMatchers("/enums/**").permitAll()
                 .antMatchers("/product/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

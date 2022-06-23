@@ -1,5 +1,6 @@
 package com.shj1995.mall.user.security;
 
+import cn.hutool.json.JSONObject;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -8,7 +9,6 @@ import io.jsonwebtoken.security.Keys;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -54,10 +54,19 @@ public class JwtTokenUtil implements InitializingBean {
         return this.getClaims(authToken).getExpiration().after(new Date());
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(SecurityUserDetails userDetails) {
         Date nowDate = new Date();
+        HashMap<String, Object> map = new HashMap<>();
+        JSONObject userInfo = new JSONObject();
+        userInfo.set("username", userDetails.getUsername());
+        userInfo.set("rules", userDetails.getAuthorities());
+        userInfo.set("nickname", userDetails.getNickname());
+        userInfo.set("avatar", userDetails.getAvatar());
+        userInfo.set("phone", userDetails.getPhone());
+        userInfo.set("email", userDetails.getEmail());
+        map.put("userInfo", userInfo);
         return Jwts.builder()
-                .setClaims(new HashMap<>())
+                .setClaims(map)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(nowDate)
                 .setExpiration(new Date(nowDate.getTime() + this.expiration)) //过期时间

@@ -1,7 +1,9 @@
 package com.shj1995.mall.product.service;
 
-import com.shj1995.mall.product.entity.Product;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shj1995.mall.product.dto.ProductQueryReq;
+import com.shj1995.mall.product.entity.Product;
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IProductService extends IService<Product> {
 
+    Page<Product> search(ProductQueryReq req);
 }

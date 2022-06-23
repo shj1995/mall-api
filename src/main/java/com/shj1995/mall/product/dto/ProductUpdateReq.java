@@ -1,4 +1,4 @@
-package com.shj1995.mall.product.controller.req;
+package com.shj1995.mall.product.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -21,8 +21,11 @@ public class ProductUpdateReq {
     @ApiModelProperty(value = "商品名称", required = true)
     private String name;
 
-    @ApiModelProperty(value = "商品图片", required = true)
-    private String imageIds;
+    @ApiModelProperty(value = "商品封面图片", required = true)
+    private String coverImage;
+
+    @ApiModelProperty(value = "商品详细图片", required = true)
+    private String detailImages;
 
     @ApiModelProperty(value = "简介", required = true)
     private String introduction;
@@ -38,6 +41,12 @@ public class ProductUpdateReq {
 
     @ApiModelProperty(value = "是否在售 1 是 0 否 ", required = true)
     private Boolean sale;
+
+    @ApiModelProperty(value = "销售数量")
+    private Integer saleQuantity;
+
+    @ApiModelProperty(value = "库存数量")
+    private Integer inventoryQuantity;
 
     @ApiModelProperty(value = "快递模板ID ")
     private Long expressTemplateId;

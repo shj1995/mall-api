@@ -1,13 +1,12 @@
 package com.shj1995.mall.product.entity;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.math.BigDecimal;
 
 /**
  * <p>
@@ -24,11 +23,14 @@ public class Product extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "商品名称")
+    @ApiModelProperty(value = "商品名称", required = true)
     private String name;
 
-    @ApiModelProperty(value = "商品图片")
-    private String imageIds;
+    @ApiModelProperty(value = "商品封面图片", required = true)
+    private String coverImage;
+
+    @ApiModelProperty(value = "商品详细图片", required = true)
+    private String detailImages;
 
     @ApiModelProperty(value = "简介")
     private String introduction;
@@ -36,7 +38,7 @@ public class Product extends BaseEntity {
     @ApiModelProperty(value = "详情描述")
     private String description;
 
-    @ApiModelProperty(value = "价格")
+    @ApiModelProperty(value = "价格", required = true)
     private BigDecimal unitPrice;
 
     @ApiModelProperty(value = "商品分类")
@@ -44,6 +46,12 @@ public class Product extends BaseEntity {
 
     @ApiModelProperty(value = "是否在售 1 是 0 否 ")
     private Boolean sale;
+
+    @ApiModelProperty(value = "销售数量")
+    private Integer saleQuantity;
+
+    @ApiModelProperty(value = "库存数量")
+    private Integer inventoryQuantity;
 
     @ApiModelProperty(value = "快递模板ID")
     private Long expressTemplateId;
@@ -53,18 +61,8 @@ public class Product extends BaseEntity {
 
     @ApiModelProperty(value = "是否新品")
     private Boolean newProduct;
-
-    @ApiModelProperty(value = "创建用户id")
-    private Long createUserId;
-
-    @ApiModelProperty(value = "创建时间")
-    private LocalDateTime createTime;
-
-    @ApiModelProperty(value = "修改用户id")
-    private Long updateUserId;
-
-    @ApiModelProperty(value = "修改时间")
-    private LocalDateTime updateTime;
-
+//
+//    @ApiModelProperty(value = "商品状态")
+//    private Integer status;
 
 }

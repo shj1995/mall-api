@@ -12,8 +12,8 @@ import lombok.Data;
 public class BaseQueryReq {
 
     @ApiModelProperty(value = "页码")
-    private int current;
+    private Integer page = 1;
 
     @ApiModelProperty(value = "每页数量")
-    private int size;
+    private Integer size = 20;
 }

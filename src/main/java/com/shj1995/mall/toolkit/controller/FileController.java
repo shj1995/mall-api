@@ -1,10 +1,8 @@
 package com.shj1995.mall.toolkit.controller;
 
 
-import com.baomidou.mybatisplus.core.incrementer.IdentifierGenerator;
 import com.google.common.collect.Lists;
 import com.shj1995.mall.core.controller.Result;
-import com.shj1995.mall.core.utils.UUIDUtils;
 import com.shj1995.mall.toolkit.entity.File;
 import com.shj1995.mall.toolkit.service.IFileService;
 import io.swagger.annotations.Api;
@@ -13,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
-
-import com.shj1995.mall.core.controller.BaseController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
@@ -74,7 +70,7 @@ public class FileController {
             sendError(HttpServletResponse.SC_NOT_FOUND, "The File[" + id + "] Not Found");
             return;
         }
-        long updateTime = file.getUpdateTime().toEpochSecond(ZoneOffset.of("+8"));
+        long updateTime = file.getUpdateTime() == null ? 0 : file.getUpdateTime().toEpochSecond(ZoneOffset.of("+8"));
         try (InputStream inputStream = file.getStorageFile().openInputStream()) {
             dealFile(inputStream, file.getSize(), updateTime, file.getType());
         } catch (IOException e) {

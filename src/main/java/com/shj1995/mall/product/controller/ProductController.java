@@ -3,10 +3,11 @@ package com.shj1995.mall.product.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.shj1995.mall.core.controller.BaseController;
 import com.shj1995.mall.core.controller.Result;
-import com.shj1995.mall.product.controller.req.ProductCreateReq;
-import com.shj1995.mall.product.controller.req.ProductQueryReq;
-import com.shj1995.mall.product.controller.req.ProductUpdateReq;
+import com.shj1995.mall.product.dto.ProductCreateReq;
+import com.shj1995.mall.product.dto.ProductQueryReq;
+import com.shj1995.mall.product.dto.ProductUpdateReq;
 import com.shj1995.mall.product.entity.Product;
 import com.shj1995.mall.product.service.IProductService;
 import io.swagger.annotations.Api;
@@ -14,8 +15,6 @@ import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.*;
-
-import com.shj1995.mall.core.controller.BaseController;
 
 /**
  * <p>
@@ -39,7 +38,7 @@ public class ProductController extends BaseController<Product> {
     }
 
     @ApiOperation("创建")
-    @PostMapping("")
+    @PostMapping("/create")
     public Result<Product> create(@RequestBody ProductCreateReq req) {
         Product product = new Product();
         BeanUtils.copyProperties(req, product);
@@ -48,7 +47,7 @@ public class ProductController extends BaseController<Product> {
     }
 
     @ApiOperation("更新")
-    @PutMapping("")
+    @PutMapping("/update")
     public Result<Product> update(@RequestBody ProductUpdateReq req) {
         Long id = req.getId();
         if (this.service().getById(id) == null) {
@@ -56,15 +55,14 @@ public class ProductController extends BaseController<Product> {
         }
         Product product = new Product();
         BeanUtils.copyProperties(req, product);
-        this.service().save(product);
+        this.service().updateById(product);
         return Result.ok(product);
     }
 
     @ApiOperation("分页查询")
-    @PostMapping("/search")
-    public Result<Page<Product>> search(@RequestBody ProductQueryReq req) {
-        Page<Product> page = new Page<>(req.getCurrent(), req.getSize());
-        return Result.ok(this.service().page(page));
+    @GetMapping("/search")
+    public Result<Page<Product>> search(ProductQueryReq req) {
+        return Result.ok(this.productService.search(req));
     }
 
 }

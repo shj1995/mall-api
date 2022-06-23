@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class CodeGenerator {
 
-    private static final String[] YOUR_TABLE_NAMES = {"product","product_spec","product_type"};
-    private static final String YOUR_MODULE_NAME = "product";
+    private static final String[] YOUR_TABLE_NAMES = {"zone"};
+    private static final String YOUR_MODULE_NAME = "toolkit";
 
     public static void main(String[] args) {
         // 代码生成器
@@ -42,7 +42,7 @@ public class CodeGenerator {
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
-        dsc.setPassword("950212.Hj");
+        dsc.setPassword("shj@2012");
         mpg.setDataSource(dsc);
 
         // 包配置
