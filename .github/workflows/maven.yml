@@ -32,7 +32,7 @@ jobs:
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: christopherchen/practice:practice
+          name: shj1995/mall-api:mall
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
