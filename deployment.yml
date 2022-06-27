@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-api
+  namespace: default
+  labels:
+    app: mall-api
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30090 #service对外开放端口
+  selector:
+    app: mall-api
+---
+apiVersion: apps/v1
+kind: Deployment #对象类型
+metadata:
+  name: mall-api #名称
+  labels:
+    app: mall-api #标注
+spec:
+  replicas: 1 #运行容器的副本数，修改这里可以快速修改分布式节点数量
+  selector:
+    matchLabels:
+      app: mall-api
+  template:
+    metadata:
+      labels:
+        app: mall-api
+    spec:
+      containers: #docker容器的配置
+        - name: mall-api
+          image: hub.kce.ksyun.com/shj1995/mall-api:dev # pull镜像的地址 ip:prot/dir/images:tag
+          imagePullPolicy: IfNotPresent #pull镜像时机，
+          env:
+            - name: JAVA_OPTS
+              value: "-Dspring.profiles.active=prod -Dspring.datasource.password=password"
+          ports:
+            - containerPort: 8080 #容器对外开放端口
+
