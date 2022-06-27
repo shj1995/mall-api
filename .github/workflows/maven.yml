@@ -10,6 +10,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Get Time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: +8
+          format: 'YYYYMMDDHHmmss'
       - uses: actions/checkout@v2
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
@@ -23,7 +29,14 @@ jobs:
       - name: Publish to Docker Repository
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: shj1995/mall-api:dev
+          name: shj1995/mall-api:${{ steps.time.outputs.time }}
           username: ${{ secrets.KSYUN_USERNAME }}
           password: ${{ secrets.KSYUN_PASSWORD }}
           registry: hub.kce.ksyun.com
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_HOST: ${{ secrets.KUBE_HOST }}
+          KUBE_CERTIFICATE: ${{ secrets.KUBE_CERTIFICATE }}
+          KUBE_TOKEN: ${{ secrets.KUBE_TOKEN }}
+        with:
+          args: kubectl -n mall-api set image deployments/$MODULE_NAME $MODULE_NAME=$Dockerimage
