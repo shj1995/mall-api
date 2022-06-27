@@ -1,6 +1,3 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
 name: Java CI with Maven
 
 on:
@@ -18,15 +15,8 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      #          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
-      #          settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: build maven
         run: mvn -B package --file pom.xml
-      #
-      #      - name: 发布到Github packages
-      #        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      #        env:
-      #          GITHUB_TOKEN: ${{ github.token }}
       - name: build docker image
         run: docker build . --file Dockerfile --tag mall-api:$(date +%s)
 
@@ -34,29 +24,6 @@ jobs:
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
           name: shj1995/mall-api:dev
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-
-#      - name: 部署搭配服务器
-#        uses: appleboy/ssh-action@master
-#        env:
-#          DB_USERNAME: ${{ secrets.DB_USERNAME }}
-#          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-#          DB_URL: ${{ secrets.DB_URL }}
-#        with:
-#          host: ${{ secrets.HOST }}
-#          username: ${{ secrets.USERNAME }}
-#          password: ${{ secrets.PASSWORD }}
-#          port: ${{ secrets.PORT }}
-#          script_stop: true
-#          envs: DB_USERNAME,DB_PASSWORD,DB_URL
-#          script: |
-#            export PATH=/usr/local/bin:$PATH
-#            source /etc/profile
-#            java -version
-#            mvn -v
-#            cd /data/webapp/mall/mall-api
-#            git pull
-#            mvn clean install
-#            curl -X POST 127.0.0.1:8089/sactuator/shutdown
-#            nohup java -jar -Dspring.profiles.active=prod -Dspring.datasource.username=$DB_USERNAME -Dspring.datasource.password=$DB_PASSWORD -Dspring.datasource.url=$DB_URL ./target/mall-0.0.1-SNAPSHOT.jar > console.log 2>&1 &
+          username: ${{ secrets.KSYUN_USERNAME }}
+          password: ${{ secrets.KSYUN_PASSWORD }}
+          registry: hub.kce.ksyun.com
