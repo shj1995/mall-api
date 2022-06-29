@@ -27,6 +27,7 @@ public abstract class BaseCURDController<T extends BaseEntity> {
 
 
     @ApiOperation("更新")
+    @PutMapping("/update")
     @ApiOperationSupport(ignoreParameters = {"req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
     public Result<T> update(@RequestBody T req) {
         Long id = req.getId();

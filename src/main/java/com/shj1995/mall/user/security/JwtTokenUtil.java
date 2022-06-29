@@ -60,7 +60,7 @@ public class JwtTokenUtil implements InitializingBean {
         JSONObject userInfo = new JSONObject();
         userInfo.set("username", userDetails.getUsername());
         userInfo.set("rules", userDetails.getAuthorities());
-        userInfo.set("fullName", userDetails.getNickname());
+        userInfo.set("realName", userDetails.getNickname());
         userInfo.set("avatar", userDetails.getAvatar());
         userInfo.set("phone", userDetails.getPhone());
         userInfo.set("email", userDetails.getEmail());
