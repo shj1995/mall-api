@@ -23,7 +23,7 @@ public class JacksonMapper extends ObjectMapper {
         this.configure(JsonGenerator.Feature.WRITE_BIGDECIMAL_AS_PLAIN, true);
         this.configure(JsonGenerator.Feature.IGNORE_UNKNOWN, true);
         this.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        this.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        this.setSerializationInclusion(JsonInclude.Include.ALWAYS);
         SimpleModule simpleModule = new SimpleModule();
         simpleModule.addSerializer(Long.class, ToStringSerializer.instance);
 //        simpleModule.addSerializer(Long.TYPE, ToStringSerializer.instance);
