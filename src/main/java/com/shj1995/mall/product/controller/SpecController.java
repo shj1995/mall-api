@@ -8,6 +8,7 @@ import com.shj1995.mall.core.controller.Result;
 import com.shj1995.mall.product.entity.Spec;
 import com.shj1995.mall.product.service.ISpecService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,6 +38,7 @@ public class SpecController extends BaseRDController<Spec> {
         return this.specService;
     }
 
+    @ApiOperation("根据商品ID获取规格列表")
     @GetMapping("/listByProductId")
     public Result<List<Spec>> listByProductId(@RequestParam Long productId) {
         List<Spec> list = this.specService.list(Wrappers.<Spec>lambdaQuery().eq(Spec::getProductId, productId));
