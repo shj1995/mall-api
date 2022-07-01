@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: mall-api
   profiles:
     active: local
   servlet:
