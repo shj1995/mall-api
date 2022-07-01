@@ -55,6 +55,9 @@ public class Spec extends BaseEntity {
     @ApiModelProperty(value = "销售数量")
     private Integer saleQuantity;
 
+    @ApiModelProperty(value = "排序")
+    private Integer sort;
+
     @ApiModelProperty(value = "库存数量")
     private Integer inventoryQuantity;
 
