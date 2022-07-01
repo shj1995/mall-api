@@ -1,10 +1,11 @@
 package com.shj1995.mall.core.controller;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
 import com.shj1995.mall.core.entity.BaseEntity;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -15,27 +16,6 @@ import java.util.List;
 public abstract class BaseRDController<T extends BaseEntity> {
 
     public abstract IService<T> service();
-
-
-    @ApiOperation("创建")
-    @ApiOperationSupport(ignoreParameters = {"req.id", "req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
-    @PostMapping("/create")
-    public Result<T> create(@RequestBody T req) {
-        this.service().save(req);
-        return Result.ok(req);
-    }
-
-
-    @ApiOperation("更新")
-    @ApiOperationSupport(ignoreParameters = {"req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
-    public Result<T> update(@RequestBody T req) {
-        Long id = req.getId();
-        if (this.service().getById(id) == null) {
-            return Result.fail("数据不存在");
-        }
-        this.service().updateById(req);
-        return Result.ok(req);
-    }
 
     @ApiOperation("根据ID获取")
     @GetMapping("/detailById/{id}")

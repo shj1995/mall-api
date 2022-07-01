@@ -3,7 +3,7 @@ package com.shj1995.mall.product.controller;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.shj1995.mall.core.controller.BaseRDController;
+import com.shj1995.mall.core.controller.BaseCURDController;
 import com.shj1995.mall.core.controller.Result;
 import com.shj1995.mall.product.entity.Spec;
 import com.shj1995.mall.product.service.ISpecService;
@@ -29,7 +29,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/product/spec")
 @RequiredArgsConstructor
-public class SpecController extends BaseRDController<Spec> {
+public class SpecController extends BaseCURDController<Spec> {
 
     private final ISpecService specService;
 
