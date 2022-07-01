@@ -4,7 +4,7 @@
     <springProperty scope="context" name="APP_PORT" source="server.port"/>
     <springProperty scope="context" name="DEFAULT_APP_PORT" source="spring.application.port"/>
     <property name="OS_NAME" value="${os.name}"/>
-    <property name="LOG_PATH" value="${LOG_PATH:-/log}" />
+    <property name="LOG_PATH" value="${LOG_PATH:-./log}" />
     <property name="LOG_DIR" value="${APP_NAME:-system}" />
     <property name="APP_PORT" value="${APP_PORT:-${DEFAULT_APP_PORT:-0}}" />
 
