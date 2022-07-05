@@ -2,6 +2,7 @@ package com.shj1995.mall.core.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 public class BaseEntity implements Serializable {
 
     @ApiModelProperty(value = "ID")
+    @TableId
     private Long id;
 
     @ApiModelProperty(value = "逻辑删除 1 是 0 否 ")

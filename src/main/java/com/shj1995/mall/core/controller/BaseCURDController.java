@@ -25,6 +25,14 @@ public abstract class BaseCURDController<T extends BaseEntity> {
         return Result.ok(req);
     }
 
+    @ApiOperation("保存,id存在就更新,id不存在就创建")
+    @ApiOperationSupport(ignoreParameters = {"req.updateTime", "req.createTime", "req.updateUserId", "req.createUserId", "deleted"})
+    @PostMapping("/saveOrUpdate")
+    public Result<T> saveOrUpdate(@RequestBody T req) {
+        this.service().saveOrUpdate(req);
+        return Result.ok(req);
+    }
+
 
     @ApiOperation("更新")
     @PutMapping("/update")
