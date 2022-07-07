@@ -49,7 +49,6 @@ public abstract class BaseCURDController<T extends BaseEntity> {
     @ApiOperation("根据ID获取")
     @GetMapping("/detailById/{id}")
     public Result<T> detail(@PathVariable Long id) {
-        System.out.println("default get /{id} request");
         Result<T> result;
         if (id == null) {
             result = Result.fail("数据不存在");

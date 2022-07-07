@@ -51,6 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/toolkit/file/**").permitAll()
                 .antMatchers("/enums/**").permitAll()
                 .antMatchers("/product/**").permitAll()
+                .antMatchers("/system/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

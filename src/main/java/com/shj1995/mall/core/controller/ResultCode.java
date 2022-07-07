@@ -19,6 +19,6 @@ public enum ResultCode {
      */
     FAIL("-1","服务器异常"),
     ;
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 }

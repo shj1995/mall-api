@@ -12,7 +12,7 @@ public class Result<T> {
     private String message;
     private T data;
 
-    public static <T> Result<T> ok(T data){
+    public static <T> Result<T> ok(T data) {
         Result<T> result = new Result<>();
         result.setCode(ResultCode.SUCCESS.getCode());
         result.setMessage(ResultCode.SUCCESS.getMessage());
@@ -20,9 +20,16 @@ public class Result<T> {
         return result;
     }
 
-    public static <T> Result<T> fail(String message){
+    public static <T> Result<T> fail(String message) {
         Result<T> result = new Result<>();
         result.setCode(ResultCode.FAIL.getCode());
+        result.setMessage(message);
+        return result;
+    }
+
+    public static <T> Result<T> fail(String code, String message) {
+        Result<T> result = new Result<>();
+        result.setCode(code);
         result.setMessage(message);
         return result;
     }
